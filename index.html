@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desert Room - Jaisalmer Luxury Desert Safaris & Camps</title>
+    <meta name="description" content="Book premium, ethical Jaisalmer desert safaris. Overnights camps, sunset camel expeditions, stargazing, and private jeep safaris with transparent pricing and Western safety standards.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Icon Font Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Premium Navigation Bar -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo" data-target="home-view" id="logo-link">
+                <span class="logo-icon">🐪</span>
+                <span class="logo-text">Desert Room</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link" data-target="home-view">Home</a></li>
+                <li><a href="#catalog-view" class="nav-link" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('catalog-view').scrollIntoView({behavior: 'smooth'}), 100);">Safaris</a></li>
+                <li><a href="#why-choose-us" class="nav-link" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('why-choose-us').scrollIntoView({behavior: 'smooth'}), 100);">Why Us</a></li>
+                <li><a href="#reviews" class="nav-link" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('reviews').scrollIntoView({behavior: 'smooth'}), 100);">Reviews</a></li>
+                <li><a href="#faqs" class="nav-link" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('faqs').scrollIntoView({behavior: 'smooth'}), 100);">FAQs</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <!-- Language Selector Dropdown -->
+                <div class="lang-dropdown">
+                    <button class="currency-btn" id="lang-toggle" aria-label="Select language"><i class="fa-solid fa-globe"></i> <span id="current-lang">EN</span></button>
+                    <ul class="lang-menu" id="lang-menu">
+                        <li data-lang="en">🇬🇧 English</li>
+                        <li data-lang="es">🇪🇸 Español</li>
+                        <li data-lang="fr">🇫🇷 Français</li>
+                        <li data-lang="de">🇩🇪 Deutsch</li>
+                        <li data-lang="hi">🇮🇳 हिन्दी</li>
+                        <li data-lang="ja">🇯🇵 日本語</li>
+                    </ul>
+                </div>
+                <button class="currency-btn" id="currency-toggle" aria-label="Toggle currency display">INR</button>
+                <button class="currency-btn" id="theme-toggle" aria-label="Toggle light and dark theme"><i class="fa-solid fa-moon"></i></button>
+                <button class="btn-primary" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('catalog-view').scrollIntoView({behavior: 'smooth'}), 100);" id="btn-nav-book">Book Now</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- VIEW 1: HOME PAGE VIEW -->
+    <main id="home-view" class="view-section active">
+        <!-- Hero Section -->
+        <section class="hero-wrapper">
+            <div class="hero-content">
+                <span class="hero-tagline">Jaisalmer, Rajasthan</span>
+                <h1>Experience the Golden Dunes in Uncompromised Comfort</h1>
+                <p>Ethical camel safaris, private luxury camping, and astronomer-guided stargazing hosted by local desert guides.</p>
+            </div>
+
+            <!-- Floating Booking Widget -->
+            <form id="search-form" class="search-widget" role="search">
+                <div class="widget-group">
+                    <label for="search-date">Travel Date</label>
+                    <input type="date" id="search-date" required>
+                </div>
+                <div class="widget-group">
+                    <label for="search-guests">Travelers</label>
+                    <input type="number" id="search-guests" min="1" max="20" value="1" required>
+                </div>
+                <div class="widget-group">
+                    <label for="search-type">Safari Style</label>
+                    <select id="search-type">
+                        <option value="all">All Experiences</option>
+                        <option value="overnight">Overnight Camps</option>
+                        <option value="day">Day & Sunset Tours</option>
+                        <option value="adventure">Desert Adventures</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" id="btn-search-safaris">Search Safaris</button>
+            </form>
+        </section>
+
+        <!-- Trust-builder Social Proof Bar -->
+        <section class="trust-bar" id="social-proof">
+            <div class="container trust-wrapper">
+                <div class="trust-item">
+                    <span class="trust-icon"><i class="fa-solid fa-trophy"></i></span>
+                    <span>No. 1 Safari Operator: <strong class="trust-rating">4.9/5</strong> on <span class="stars">TripAdvisor ★★★★★</span></span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                    <span>Safety Certified: <strong class="trust-rating">Local Tourism Board</strong> License</span>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon"><i class="fa-solid fa-heart"></i></span>
+                    <span>Ethical Operations: <strong class="trust-rating">Camel Welfare</strong> Certified</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safari Catalog Section -->
+        <section class="catalog-section" id="catalog-view">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Handcrafted Expeditions</span>
+                    <h2>Featured Safari Packages</h2>
+                </div>
+                
+                <div class="packages-grid" id="packages-container">
+                    <!-- Dynamic Package Cards injected here via app.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us / Friction Reducer Section -->
+        <section class="why-section" id="why-choose-us">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle" style="color: var(--accent-sunset);">Built for International Travelers</span>
+                    <h2 style="color: var(--pure-white);">Uncompromising Standards in the Wild</h2>
+                </div>
+                
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-restroom"></i></div>
+                        <h3>Western Toilets & Cleanliness</h3>
+                        <p>Our private campsites feature clean running water, western toilet blocks, fresh linens, and complete sanitization before arrival.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-ban"></i></div>
+                        <h3>Zero tourist Traps</h3>
+                        <p>We are completely independent. We enforce a strict policy of zero forced shopping stops. Your booking supports local guides directly.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-paw"></i></div>
+                        <h3>Certified Camel Welfare</h3>
+                        <p>Our camels are owned by local handlers who limit working hours, feed them premium nutrients, and treat them as family companions.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3>24/7 English Assistance</h3>
+                        <p>Enjoy direct line access to our English-speaking coordinators on WhatsApp. We facilitate hotel pickups and transfers seamlessly.</p>
+                        <p style="margin-top: 8px;"><a href="https://wa.me/919772020667?text=Hi%20Mr.%20Lucky!%20I%20am%20interested%20in%20booking%20a%20desert%20safari%20and%20need%20some%20assistance." target="_blank" rel="noopener noreferrer" style="color: var(--accent-sunset); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;"><i class="fa-brands fa-whatsapp"></i> Chat: Mr. Lucky</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials / Guest Reviews Section -->
+        <section class="reviews-section" id="reviews">
+            <div class="container">
+                <div class="section-header">
+                    <span class="subtitle">Wandered & Wondered</span>
+                    <h2>Guest Stories from the Dunes</h2>
+                </div>
+                
+                <div class="reviews-grid">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">SL</div>
+                                <div>
+                                    <h4 class="reviewer-name">Sarah Jenkins</h4>
+                                    <span class="reviewer-meta">London, United Kingdom</span>
+                                </div>
+                            </div>
+                            <span class="review-date">May 2026</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote class="review-text">
+                            "An unforgettable night under the stars! The luxury tents are extremely clean, and the western toilets were a huge relief. Mr. Lucky and his team were professional and welcoming. 10/10!"
+                        </blockquote>
+                        <div class="review-tag">Imperial Dunes Overnight Camp</div>
+                    </div>
+                    
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">ER</div>
+                                <div>
+                                    <h4 class="reviewer-name">Emily Ross</h4>
+                                    <span class="reviewer-meta">Toronto, Canada</span>
+                                </div>
+                            </div>
+                            <span class="review-date">April 2026</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote class="review-text">
+                            "As a solo female traveler, I was initially anxious about safety, but the team made me feel completely secure. The astronomy-guided stargazing was magic, and the food was delicious. No tourist traps or forced shopping!"
+                        </blockquote>
+                        <div class="review-tag">Jeep Stargazing Tour</div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">DM</div>
+                                <div>
+                                    <h4 class="reviewer-name">David &amp; Maria</h4>
+                                    <span class="reviewer-meta">Munich, Germany</span>
+                                </div>
+                            </div>
+                            <span class="review-date">March 2026</span>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <blockquote class="review-text">
+                            "The dune bashing jeep safari was thrilling, and the camel ride at sunset was beautiful. We loved that they certified camel welfare. Highly recommend the private dinner upgrade!"
+                        </blockquote>
+                        <div class="review-tag">Sunset Camel Tour</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive FAQ Accordion -->
+        <section class="catalog-section" id="faqs" style="background-color: var(--pure-white);">
+            <div class="container" style="max-width: 800px;">
+                <div class="section-header">
+                    <span class="subtitle">Anxieties Addressed</span>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <details style="padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                        <summary style="font-weight: 600; font-family: var(--font-heading); font-size: 18px; color: var(--twilight-blue); outline: none;">Is it safe for solo female travelers?</summary>
+                        <p style="margin-top: 12px; color: var(--charcoal-light); font-size: 15px;">Absolutely. Safety is our primary priority. We only deploy verified, background-checked local guides, maintain private campsite enclosures, and ensure communication lines are active at all times. Solo travelers are paired in group structures or offered dedicated escorts.</p>
+                    </details>
+                    
+                    <details style="padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                        <summary style="font-weight: 600; font-family: var(--font-heading); font-size: 18px; color: var(--twilight-blue); outline: none;">Are dietary requirements accommodated in the desert?</summary>
+                        <p style="margin-top: 12px; color: var(--charcoal-light); font-size: 15px;">Yes, definitely. Our professional desert chefs are trained to prepare dedicated Vegan, Vegetarian, Gluten-Free, and Halal cuisines. Please make sure to select your dietary preferences during checkout so we can prepare fresh ingredients.</p>
+                    </details>
+
+                    <details style="padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                        <summary style="font-weight: 600; font-family: var(--font-heading); font-size: 18px; color: var(--twilight-blue); outline: none;">What is your cancellation and weather policy?</summary>
+                        <p style="margin-top: 12px; color: var(--charcoal-light); font-size: 15px;">We offer full 100% refunds for cancellations made up to 48 hours before your booking date. If severe sandstorms occur, we offer a free rebooking window or instant full refunds.</p>
+                    </details>
+
+                    <details style="padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; cursor: pointer;">
+                        <summary style="font-weight: 600; font-family: var(--font-heading); font-size: 18px; color: var(--twilight-blue); outline: none;">What should I pack for an overnight stay?</summary>
+                        <p style="margin-top: 12px; color: var(--charcoal-light); font-size: 15px;">Pack a warm jacket (desert nights can get cold, down to 10°C / 50°F), comfortable walking shoes, sunscreen, a hat, and personal toiletries. We provide premium bedding, sleeping bags, towels, and filtered water.</p>
+                    </details>
+                </div>
+
+                <!-- WhatsApp Help CTA -->
+                <div style="margin-top: 40px; padding: 24px; background-color: var(--sand-cream); border-radius: 12px; text-align: center; border: 1px solid var(--border-color);">
+                    <h3 style="font-family: var(--font-heading); color: var(--twilight-blue); margin-bottom: 8px; font-size: 20px;">Still have questions?</h3>
+                    <p style="color: var(--charcoal-light); font-size: 15px; margin-bottom: 16px;">Get instant, personalized support from our Jaisalmer safari coordinator on WhatsApp.</p>
+                    <a href="https://wa.me/919772020667?text=Hi%20Mr.%20Lucky!%20I%20have%20some%20questions%20about%20the%20Jaisalmer%20desert%20safari%20packages." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Chat with Mr. Lucky on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- VIEW 2: INTERACTIVE BOOKING PORTAL (CHECKOUT FLOW) -->
+    <section id="booking-view" class="view-section container">
+        <div class="section-header" style="margin-bottom: 30px;">
+            <h2>Secure Reservation Portal</h2>
+        </div>
+
+        <!-- Checkout Steps visual timeline -->
+        <div class="checkout-steps">
+            <div class="step-item active" id="step-timeline-1">
+                <div class="step-number">1</div>
+                <div class="step-label">Add-ons</div>
+            </div>
+            <div class="step-item" id="step-timeline-2">
+                <div class="step-number">2</div>
+                <div class="step-label">Traveler Info</div>
+            </div>
+            <div class="step-item" id="step-timeline-3">
+                <div class="step-number">3</div>
+                <div class="step-label">Payment</div>
+            </div>
+        </div>
+
+        <div class="booking-container">
+            <!-- Left Side: Main configurations -->
+            <div class="booking-main-panel">
+                
+                <!-- STEP 1: CONFIGURE UPGRADES & DATES -->
+                <div id="step-1-form" class="checkout-form-step">
+                    <div class="config-group">
+                        <h3>1. Adjust Dates & Travelers</h3>
+                        <div class="form-grid" style="margin-bottom: 24px;">
+                            <div class="form-group">
+                                <label for="checkout-date">Selected Date</label>
+                                <input type="date" id="checkout-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout-guests">Number of Guests</label>
+                                <input type="number" id="checkout-guests" min="1" value="1" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-group">
+                        <h3>2. Select Experience Upgrades</h3>
+                        <div class="add-ons-list" id="addons-list">
+                            <!-- Dynamic Add-ons injected here via app.js -->
+                        </div>
+                    </div>
+
+                    <div style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                        <button type="button" class="btn-primary" id="btn-to-step2">Continue to Traveler Details <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: TRAVELER INFORMATION -->
+                <div id="step-2-form" class="checkout-form-step" style="display: none;">
+                    <h3 style="font-size: 20px; color: var(--twilight-blue); margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Traveler Details</h3>
+                    <div id="travelers-forms-container">
+                        <!-- Dynamic forms built based on guest count -->
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+                        <button type="button" class="btn-outline" id="btn-back-to-step1"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                        <button type="button" class="btn-primary" id="btn-to-step3">Proceed to Checkout Payment <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: MOCK PAYMENT TERMINAL -->
+                <div id="step-3-form" class="checkout-form-step" style="display: none;">
+                    <h3 style="font-size: 20px; color: var(--twilight-blue); margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">Secure Billing Terminal</h3>
+                    
+                    <div class="secure-badge">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>SSL Secure 256-bit Encrypted Transaction</span>
+                    </div>
+
+                    <form id="payment-form-element">
+                        <div class="form-group">
+                            <label for="card-name">Cardholder Name</label>
+                            <input type="text" id="card-name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="4111 2222 3333 4444" required>
+                        </div>
+                        <div class="card-inputs">
+                            <div class="form-group">
+                                <label for="card-expiry">Expiration (MM/YY)</label>
+                                <input type="text" id="card-expiry" placeholder="12/28" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-cvc">Security Code (CVC)</label>
+                                <input type="password" id="card-cvc" placeholder="***" maxlength="4" required>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+                            <button type="button" class="btn-outline" id="btn-back-to-step2"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                            <button type="submit" class="btn-primary" id="btn-submit-payment">Pay Securely: <span class="pay-amount">₹0.00</span></button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Right Side: Sticky Checkout Invoice -->
+            <aside class="booking-sidebar">
+                <h3 class="sidebar-title">Booking Summary</h3>
+                <div class="invoice-summary">
+                    <div class="invoice-row">
+                        <span id="invoice-package-name">Package Name</span>
+                        <strong id="invoice-base-price">₹0.00</strong>
+                    </div>
+                    <div class="invoice-row">
+                        <span>Date:</span>
+                        <span id="invoice-date">No date selected</span>
+                    </div>
+                    <div class="invoice-row">
+                        <span>Travelers:</span>
+                        <span id="invoice-guests">1 Traveler</span>
+                    </div>
+                    
+                    <!-- Dynamic Addons details container -->
+                    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                        <span style="font-size: 12px; color: rgba(255,255,255,0.6);">Selected Upgrades:</span>
+                        <ul class="invoice-item-list" id="invoice-addons-list">
+                            <!-- Injected upgrades list -->
+                        </ul>
+                    </div>
+
+                    <div class="invoice-row">
+                        <span>Taxes & Service Fees (5%):</span>
+                        <strong id="invoice-taxes">₹0.00</strong>
+                    </div>
+
+                    <div class="invoice-row total">
+                        <span>Grand Total:</span>
+                        <strong id="invoice-total">₹0.00</strong>
+                    </div>
+                </div>
+
+                <!-- Hold Countdown Indicator -->
+                <div class="hold-timer">
+                    <i class="fa-regular fa-clock"></i> Dune seats locked for: <span id="timer-count">15:00</span>
+                </div>
+
+                <!-- Sidebar WhatsApp Quick Help -->
+                <div style="margin-top: 20px; padding: 16px; background: rgba(255, 255, 255, 0.05); border: 1px dashed rgba(255, 255, 255, 0.2); border-radius: 8px; text-align: center;">
+                    <p style="font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 10px; font-weight: 500;">Need help with your booking?</p>
+                    <a href="https://wa.me/919772020667?text=Hi%20Mr.%20Lucky!%20I'm%20on%20the%20checkout%20page%20and%20need%20some%20help%20with%20booking%20my%20safari." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="padding: 8px 16px; font-size: 13px; display: flex; width: 100%;">
+                        <i class="fa-brands fa-whatsapp"></i> Chat: Mr. Lucky
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- VIEW 3: CONFIRMATION & AUTOMATED VOUCHER SCREEN -->
+    <section id="confirmation-view" class="view-section container">
+        <div class="section-header" style="margin-bottom: 20px;">
+            <div style="font-size: 48px; color: #385723; margin-bottom: 12px;"><i class="fa-solid fa-circle-check"></i></div>
+            <h2>Booking Confirmed!</h2>
+            <p style="color: var(--charcoal-light)">Your reservation is 100% finalized. A copy has been dispatched to your email.</p>
+        </div>
+
+        <!-- Boarding Pass Design Voucher -->
+        <div class="voucher-card" id="printable-voucher">
+            <div class="voucher-header">
+                <div>
+                    <span style="font-size: 11px; text-transform: uppercase; color: var(--accent-sunset); font-weight: 700; letter-spacing: 1px;">Desert Adventure Ticket</span>
+                    <h3 class="voucher-logo-text">Desert Room</h3>
+                </div>
+                <div class="voucher-ref">
+                    <span>Reference Code</span>
+                    <h4 id="v-booking-ref">DR-XXXXXX</h4>
+                </div>
+            </div>
+            
+            <div class="voucher-body">
+                <div class="voucher-details">
+                    <div class="v-item">
+                        <label>Safari Package</label>
+                        <p id="v-package-name">Sunset Camel Expedition</p>
+                    </div>
+                    <div class="voucher-row">
+                        <div class="v-item">
+                            <label>Lead Passenger</label>
+                            <p id="v-traveler">John Doe</p>
+                        </div>
+                        <div class="v-item">
+                            <label>Date</label>
+                            <p id="v-date">2026-06-05</p>
+                        </div>
+                    </div>
+                    <div class="voucher-row">
+                        <div class="v-item">
+                            <label>Guest Count</label>
+                            <p id="v-guests">2 Guests</p>
+                        </div>
+                        <div class="v-item">
+                            <label>Dietary Code</label>
+                            <p id="v-diet">NONE</p>
+                        </div>
+                    </div>
+                    <div class="v-item">
+                        <label>Upgrades & Add-ons</label>
+                        <p id="v-addons" style="font-size: 13px; font-weight: 500;">No Upgrades</p>
+                    </div>
+                </div>
+
+                <!-- Stub QR Verification code section -->
+                <div class="voucher-stub">
+                    <div class="qr-code-box" id="v-qr-code">
+                        <!-- Dynamically drawn SVG QR Code -->
+                    </div>
+                    <span style="font-size: 10px; font-weight: 700; text-transform: uppercase; color: var(--twilight-blue);">Scan to Verify</span>
+                    <span id="v-package-detail-name" style="font-size: 9px; color: var(--charcoal-light); display: block; margin-top: 4px; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Package Name</span>
+                </div>
+            </div>
+
+            <div class="voucher-footer">
+                <span>📍 Meeting Point: Desert Room Main Office, Fort Road, Jaisalmer</span>
+                <span><i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 4px;"></i> WhatsApp: <a href="https://wa.me/919772020667" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; font-weight: 600;">Mr. Lucky (+91 97720 20667)</a></span>
+            </div>
+        </div>
+
+        <!-- Voucher Actions -->
+        <div class="voucher-actions">
+            <button class="btn-outline" onclick="navigateTo('home-view')"><i class="fa-solid fa-house"></i> Return to Homepage</button>
+            <button class="btn-primary" id="btn-print-voucher"><i class="fa-solid fa-print"></i> Download Voucher PDF</button>
+            <a href="https://wa.me/919772020667" class="btn-whatsapp" id="v-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp"></i> Share details with Mr. Lucky
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Page links -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo" style="margin-bottom: 16px; display: inline-flex;">
+                    <span class="logo-icon">🐪</span>
+                    <span class="logo-text" style="color: var(--pure-white);">Desert Room</span>
+                </a>
+                <p style="font-size: 14px; line-height: 1.5; margin-bottom: 16px;">Handcrafting premium, comfort-first wilderness adventures in the Great Indian Desert of Rajasthan.</p>
+                <div style="font-size: 14px;"><i class="fa-brands fa-whatsapp" style="color: var(--accent-sunset);"></i> Contact: <a href="https://wa.me/919772020667" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Mr. Lucky (+91 97720 20667)</a></div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#" data-target="home-view">Home</a></li>
+                    <li><a href="#catalog-view" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('catalog-view').scrollIntoView({behavior: 'smooth'}), 100);">Safari Catalog</a></li>
+                    <li><a href="#why-choose-us" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('why-choose-us').scrollIntoView({behavior: 'smooth'}), 100);">Why Choose Us</a></li>
+                    <li><a href="#reviews" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('reviews').scrollIntoView({behavior: 'smooth'}), 100);">Guest Reviews</a></li>
+                    <li><a href="#faqs" onclick="navigateTo('home-view'); setTimeout(() => document.getElementById('faqs').scrollIntoView({behavior: 'smooth'}), 100);">Help Center & FAQs</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal & Trust</h4>
+                <ul>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#">Safety Protocols</a></li>
+                    <li><a href="#">Camel Care Ethics</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Join the Caravan</h4>
+                <p style="font-size: 13px;">Receive updates on seasonal migrations, packages, and custom itineraries.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+                    <input type="email" placeholder="Enter your email" required aria-label="Email address for newsletter">
+                    <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Desert Room Jaisalmer. All Rights Reserved.</p>
+            <div class="payment-badges" aria-label="Accepted Payment Methods">
+                <i class="fa-brands fa-cc-visa" title="Visa"></i>
+                <i class="fa-brands fa-cc-mastercard" title="Mastercard"></i>
+                <i class="fa-brands fa-cc-paypal" title="PayPal"></i>
+                <i class="fa-brands fa-cc-stripe" title="Stripe"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Action -->
+    <a href="https://wa.me/919772020667?text=Hi%20Desert%20Room!%20I%20am%20interested%20in%20booking%20a%20desert%20safari." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with Mr. Lucky</span>
+    </a>
+
+    <!-- Hidden Google Translate Element container -->
+    <div id="google_translate_element" style="display:none; visibility:hidden;"></div>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,es,fr,de,ja',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- App JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
